@@ -1,0 +1,32 @@
+.container {
+    display: flex;
+    margin-top: 70px;
+    justify-content: space-evenly;
+    border: 5px;
+  }
+  
+  .form-container {
+    border: 1px solid #ccc;
+    padding: 30px;
+    border-radius: 5%;
+    width: 20%; /* Adjust the width as needed */
+  }
+  
+  .table-container {
+    border: 1px solid #ccc;
+    padding: 30px;
+    border-radius: 5%;
+    width: 75%; /* Adjust the width as needed */
+  }
+  
+  /* Additional styling for better presentation */
+  .form-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .form-container form button {
+    margin-top: 10px;
+  }
+  
