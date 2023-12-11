@@ -13,6 +13,7 @@ import {
 } from '@mui/material';
 import ViewContact from './ViewContact';
 import UpdateContact from './UpdateContact';
+import './ContactTable.css';
 
 const ContactTable = () => {
   const [contacts, setContacts] = useState([]);
@@ -56,10 +57,12 @@ const ContactTable = () => {
   };
 
   return (
-    <div>
-      <button onClick={handleAddContact}>Add New Contact</button>
-      <TableContainer component={Paper}>
-        <Table>
+    <div className="container">
+      <div className="button-container">
+        <button onClick={handleAddContact}>Add New Contact</button>
+      </div>
+      <div className="table-container">
+        <Table className="table">
           <TableHead>
             <TableRow>
               <TableCell>ID</TableCell>
@@ -81,35 +84,39 @@ const ContactTable = () => {
                 <TableCell>{contact.location}</TableCell>
                 <TableCell>{contact.registeredDate}</TableCell>
                 <TableCell>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={() => handleUpdateContact(contact.id)}
-                  >
-                    Update
-                  </Button>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={() => handleDeleteContact(contact.id)}
-                  >
-                    Delete
-                  </Button>
+                  <div className="actions">
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      onClick={() => handleUpdateContact(contact.id)}
+                    >
+                      Update
+                    </Button>
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      onClick={() => handleDeleteContact(contact.id)}
+                    >
+                      Delete
+                    </Button>
+                  </div>
                 </TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
-      </TableContainer>
-      <TablePagination
-        rowsPerPageOptions={[5]}
-        component="div"
-        count={contacts.length}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        onPageChange={handleChangePage}
-        onRowsPerPageChange={handleChangeRowsPerPage}
-      />
+      </div>
+      <div className="pagination-container">
+        <TablePagination
+          rowsPerPageOptions={[5]}
+          component="div"
+          count={contacts.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+        />
+      </div>
       <ViewContact contact={selectedContact} onClose={() => setSelectedContact(null)} />
     </div>
   );
